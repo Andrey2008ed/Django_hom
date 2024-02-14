@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<h1>Customer: {{ customer.name }}</h1>
+{% for order, products_with_quantities in orders_products %}
+    <p>Order ID: {{ order.id }} - Date: {{ order.date_ordered }}</p>
+    <h3>Products:</h3>
+    <ul>
+        {% for product, quantity in products_with_quantities %}
+            <li>{{ product.name }} - Price: {{ product.price }} - Quantity: {{ quantity }}</li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+{% endblock %}
