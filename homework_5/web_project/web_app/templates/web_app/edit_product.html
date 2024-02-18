@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Product Form</title>
+{% endblock %}
+
+{% block content %}
+<h1>Product Form</h1>
+<h3>{{ message }}</h3>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Отправить">
+</form>
+
+{% endblock %}

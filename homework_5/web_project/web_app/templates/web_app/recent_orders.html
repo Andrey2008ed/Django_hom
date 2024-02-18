@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Recent Orders{% endblock %}
+
+{% block content %}
+<h1>Recent Orders for {{ customer.name }}</h1>
+
+<section>
+    <h2>Last 7 Days</h2>
+    <ul>
+        {% for item in orders_data.week %}
+            <li>{{ item.order.date_ordered }}: {{ item.product.name }} - Quantity: {{ item.quantity }}</li>
+        {% empty %}
+            <li>No orders in the last week.</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section>
+    <h2>Last 30 Days</h2>
+    <ul>
+        {% for item in orders_data.month %}
+            <li>{{ item.order.date_ordered }}: {{ item.product.name }} - Quantity: {{ item.quantity }}</li>
+        {% empty %}
+            <li>No orders in the last month.</li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section>
+    <h2>Last 365 Days</h2>
+    <ul>
+        {% for item in orders_data.year %}
+            <li>{{ item.order.date_ordered }}: {{ item.product.name }} - Quantity: {{ item.quantity }}</li>
+        {% empty %}
+            <li>No orders in the last year.</li>
+        {% endfor %}
+    </ul>
+</section>
+
+{% endblock %}
