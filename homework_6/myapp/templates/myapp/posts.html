@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<h1>Posts</h1>
+    {% for post in posts %}
+        {% if post.is_published %}
+            <a href="{% url 'show_post_id' post.id %}">{{ post.name_title }}</a>
+        {% else %}
+            <p>{{ post.name_title }}</p>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
